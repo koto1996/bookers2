@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @book=Book.new
     @book.user_id=current_user.id
     @book.save
-    redirect_to users_path
+    redirect_to book_path(@book.user_id)
   end
 
   def edit
