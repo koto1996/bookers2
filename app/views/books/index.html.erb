@@ -1,26 +1,45 @@
-
-
-<div class="col-md-8 offset-md-1">
- <h2>Books</h2>
-  <table class="table-hover table-inverse">
-   <thead>
-     <tr>
+<main>
+ <div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class="col-md-3">
+    <%=render'users/userinfo',user: @user%>
+    <h2>New book</h2>
+          <%=form_with model: @book do |f| %>
+          <h4>Title</h4>
+          <%= f.text_field :title %>
+          <h4>Opinion</h4>
+          <%= f.text_area :body %>
+          <%= f.submit 'Create Book'%>
+        <% end %>
+   </div>
+   <div class="col-md-8 offset-md-1">
+    <h2>Books</h2>
+    <table>
+     <thead>
+      <tr>
        <th></th>
        <th>Title</th>
        <th>Opinion</th>
        <th colspan="3"></th>
-     </tr>
-   </thead>
-   <tbody>
-    <%@books.each do |book|%>
-     <tr>
-       <tb>image_tag</tb>
+      </tr>
+     </thead>
+ 
+     <%@books.each do |book|%>
+     <tbody>
+      <tr>
+       <tb><%=image_tag book.user.get_profile_image(80,80)%><br>
+       <%=link_to user_path(book.id) do %>
+       <%=book.user.name%>
+       <% end %></tb>
        <%=link_to book_path(book.id) do %>
        <tb><%=book.title%></tb>
        <% end %>
        <tb><%=book.body%></tb>
-     </tr>
-    <% end %>
-   </tbody>
-  </table>
-</div>
+      </tr>
+     </tbody>
+     <% end %>
+    </table>
+   </div>
+  </div>
+ </div>
+</main>
