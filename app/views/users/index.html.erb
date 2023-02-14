@@ -3,14 +3,7 @@
     <div class="row">
       <div class="col-md-3">
         <%=render'userinfo',user: @user%>
-          <h2>New book</h2>
-          <%=form_with model: @book do |f| %>
-          <h4>Title</h4>
-          <%= f.text_field :title %>
-          <h4>Opinion</h4>
-          <%= f.text_area :body %>
-          <%= f.submit 'Create Book'%>
-        <% end %>
+        <%=render'books/newbook',book: @book%>
       </div>
       <div class="col-md-8 offset-md-1">
         <h2>Users</h2>
@@ -29,9 +22,9 @@
               <td><%=user.name%></td>
               <td><%=link_to "show",user_path(user.id)%></td>
             </tr>
-          </tbody>
+          　</tbody>
           <% end %>
         </table>
-      </div>
     </div>
+  </div>
 </main>
