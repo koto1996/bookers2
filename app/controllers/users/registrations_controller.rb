@@ -56,7 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_out_path_for(resource)
-   root_path
+   about_path
   end
 
   # The path used after sign up for inactive accounts.
