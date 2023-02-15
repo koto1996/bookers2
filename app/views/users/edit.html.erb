@@ -1,4 +1,13 @@
 <main>
+ <%if@user.errors.any? %>
+  <%= @user.errors.count %>errors prohibited this
+   obj from being saved:
+  <ul>
+  <% @user.errors.full_messages.each do |message| %>
+  <li><%=message%></li>
+  <% end %>
+  </ul>
+  <% end %>
  <h1>User info</h1>
   <div class="container">
    <%=form_with model:@user do |f|%>
@@ -12,7 +21,7 @@
    </div>
    <div class="row">
     <label for="inputIntroduction">Introduction</label>
-    <%= f.text_area :inputIntroduction,id:'inputIntroduction'%>
+    <%= f.text_area :introduction,id:'inputIntroduction'%>
    </div>
    <div class="row">
     <%=f.submit'Update User'%>
